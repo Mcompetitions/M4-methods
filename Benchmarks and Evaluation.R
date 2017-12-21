@@ -4,8 +4,8 @@ library(forecast) #Requires v8.2
 
 #################################################################################
 #In this example let us produce forecasts for 100 randomly generated timeseries
-fh=6 #The forecasting horizon examined
-frq=1 #The frequency of the data
+fh <- 6 #The forecasting horizon examined
+frq <- 1 #The frequency of the data
 data_train = data_test <- NULL #Train and test sample
 for (i in 1:100){
   data_all <- 2+ 0.15*(1:20) + rnorm(20) 
