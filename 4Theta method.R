@@ -9,15 +9,15 @@ library(forecast) #requires version 8.2
 
 SeasonalityTest <- function(input, ppy){
   #Used for determining whether the time series is seasonal
-  tcrit = 1.645
+  tcrit <- 1.645
   if (length(input)<3*ppy){
-    test_seasonal = FALSE
+    test_seasonal <- FALSE
   }else{
-    xacf = acf(input, plot = FALSE)$acf[-1, 1, 1]
-    clim = tcrit/sqrt(length(input)) * sqrt(cumsum(c(1, 2 * xacf^2)))
+    xacf <- acf(input, plot = FALSE)$acf[-1, 1, 1]
+    clim <- tcrit/sqrt(length(input)) * sqrt(cumsum(c(1, 2 * xacf^2)))
     test_seasonal <- ( abs(xacf[ppy]) > clim[ppy] )
     
-    if (is.na(test_seasonal)==TRUE){ test_seasonal = FALSE }
+    if (is.na(test_seasonal)==TRUE){ test_seasonal <- FALSE }
   }
   
   return(test_seasonal)
@@ -65,11 +65,11 @@ Theta.fit <- function(input, fh, theta, curve, model, seasonality , plot=FALSE){
   if (curve=="Exp"){
     estimate <- lm(log(des_input)~xs)
     thetaline0In <- exp(predict(estimate))+input-input
-    thetaline0Out <- exp(predict(estimate,newdf))+outtest-outtest
+    thetaline0Out <- exp(predict(estimate, newdf))+outtest-outtest
   }else{
     estimate <- lm(des_input ~ poly(xs, 1, raw=TRUE))
     thetaline0In <- predict(estimate)+des_input-des_input
-    thetaline0Out <- predict(estimate,newdf)+outtest-outtest
+    thetaline0Out <- predict(estimate, newdf)+outtest-outtest
   }
   
   #Estimete Theta line (theta)
