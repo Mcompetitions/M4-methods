@@ -5,9 +5,6 @@
 #Method Description: Generalizing the Theta model for automatic forecasting
 #Method Type: Statistical - Decomposition
 
-#Comments: In this example, the method is used for the case of the M3 Competition data where MASE and sMAPE values are estimated accordingly
-
-
 library(forecast) #requires version 8.2
 
 SeasonalityTest <- function(input, ppy){
