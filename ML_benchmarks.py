@@ -307,6 +307,11 @@ def main():
                 y_hat_test_MLP[i] = 0
             if y_hat_test_RNN[i] < 0:
                 y_hat_test_RNN[i] = 0
+                
+            if y_hat_test_MLP[i] > (1000 * max(ts)):
+                y_hat_test_MLP[i] = max(ts)         
+            if y_hat_test_RNN[i] > (1000 * max(ts)):
+                y_hat_test_RNN[i] = max(ts)
 
         x_train, y_train, x_test, y_test = split_into_train_test(ts, in_size, fh)
 
