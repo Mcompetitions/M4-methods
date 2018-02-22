@@ -301,7 +301,7 @@ def main():
             y_hat_test_MLP[i - len(ts)] = y_hat_test_MLP[i - len(ts)] * seasonality_in[i % freq] / 100
             y_hat_test_RNN[i - len(ts)] = y_hat_test_RNN[i - len(ts)] * seasonality_in[i % freq] / 100
 
-        # check if negative
+        # check if negative or extreme
         for i in range(len(y_hat_test_MLP)):
             if y_hat_test_MLP[i] < 0:
                 y_hat_test_MLP[i] = 0
