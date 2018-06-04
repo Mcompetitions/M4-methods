@@ -1,14 +1,9 @@
 
-install.packages(c("zoo","forecast","doParallel"))
-install.packages("forecast")
-install.packages("curl")
+install.packages(c("zoo","forecast","doParallel","rstudioapi"))
 library(zoo)
-library(curl)
 library(forecast)
 library(doParallel)
 library(data.table)
-
-install.packages("rstudioapi") 
 library(rstudioapi)
 
 rm(list = ls())
@@ -22,9 +17,8 @@ setwd(dirname(current_path))
 
 mydata <- data.frame(t(read.csv("input/weekly.csv", header=FALSE)))
 n <- ncol(mydata)
-#n <- 1
 
-
+################################smape function
 smape_cal <- function(forecasts, outsample){
   
   outsample <- as.numeric(outsample) ; forecasts<-as.numeric(forecasts)
@@ -32,6 +26,7 @@ smape_cal <- function(forecasts, outsample){
   return(smape)
 }
 
+###################cross validation function
 cross_validation <-function(ts=NULL, method=c('snaive', 'theta', 'ets', 'naive', 'Dholt', 'arima', 'tbats','stla','stle','stlt'),
                             error=c('RMSE'), step_ahead=1, start=1)
 {
@@ -222,18 +217,6 @@ cross_validation <-function(ts=NULL, method=c('snaive', 'theta', 'ets', 'naive',
 
 
 
-
-
-
-
-#error_tbats <- matrix(NA, nrow=1, ncol = n)
-#error_af <- matrix(NA, nrow=1, ncol = n)
-#error_com <- matrix(NA, nrow=1, ncol = n)
-
-
-
-
-
   
   yearly_model <- 
   foreach(i = 1:n, .combine = 'rbind', .packages=c('zoo','forecast')) %dopar% {
@@ -242,20 +225,14 @@ cross_validation <-function(ts=NULL, method=c('snaive', 'theta', 'ets', 'naive',
   test <- subset(raw_data, start = (length(raw_data)-25))
 
   
-  
-  #lambda_test <- BoxCox.lambda(train)
-  #######################TBATS###############
-  
   fit_tbats <- tbats(train)    #1
   fcst_tbats <- forecast(fit_tbats, h=26)
   error_tbats <- smape_cal(fcst_tbats$mean,test)
-  ######################AF##################
   
   aic_model<- matrix(NA, nrow=12, ncol=1)
   for(j in 1:12)
   {
     bestfit <- auto.arima(train, xreg=fourier(train, K=j), seasonal=FALSE)
-    #rmse_model[j,]<- accuracy(bestfit)[,2]
     aic_model[j,] <- bestfit$aic
   }
   k=which.min(aic_model)
@@ -269,7 +246,6 @@ cross_validation <-function(ts=NULL, method=c('snaive', 'theta', 'ets', 'naive',
   com1 <- (fcst_tbats$mean + fcst_af$mean)/2 #3
   error_com1 <- smape_cal(com1,test)
   
-  ################################NAIVE
   
   fcst_stla <- try(stlf(train, h=26,forecastfunction = thetaf),silent = TRUE)    #4
   error_stla <- tryCatch(error_stla<- smape_cal(fcst_stla$mean,test) ,
@@ -281,7 +257,6 @@ cross_validation <-function(ts=NULL, method=c('snaive', 'theta', 'ets', 'naive',
   
   fcst_nnetar <- forecast(nnetar(train), h=26)                          #6
   error_nnetar <- smape_cal(fcst_nnetar$mean, test) 
-  
   
   
   fcst_theta <- thetaf(train, h=26)    #7
@@ -351,15 +326,11 @@ cross_validation <-function(ts=NULL, method=c('snaive', 'theta', 'ets', 'naive',
   alpha <- c(error_tbats,error_af,error_com1,error_stla,error_stle,error_nnetar,error_theta,error_avg,error_naive,error_ses1,error_ses2,
              error_ses3,error_holt,error_Dholt,error_com2, error_com3,error_com4,error_com5,error_com6,error_com7,error_com8,error_snaive, error_com9,error_com10,error_com11,error_com12)
   
-  #c(i,which.min(as.matrix( alpha, nrow=26)),error_tbats,error_af,error_com1,error_stla,error_stle,error_nnetar,error_theta,error_avg,error_naive,error_ses1,error_ses2,
-    #error_ses3,error_holt,error_Dholt,error_com2, error_com3,error_com4,error_com5,error_com6,error_com7,error_com8,error_snaive, error_com9,error_com10,error_com11,error_com12,alpha[which.min(as.matrix( alpha, nrow=26))] )
- 
-  
   
    
 pq <- which.min(as.matrix( alpha, nrow=26))
 pqv <- alpha[pq]
-#lambda_test2 <- BoxCox.lambda(raw_data)
+
 
 raw_data2 <- msts(na.trim(mydata[,i], sides = "right"), seasonal.periods = c(26,52))
 train2 <- subset(raw_data2, end = (length(raw_data2)-26))
@@ -386,17 +357,9 @@ error_stlar <- tryCatch(error_stlar<- smape_cal(fcst_stlar$mean,test2) ,
 
 
 
-
 beta <- c(error_tbats2,error_stla2,error_stle2,error_stlar)
 lv <- which.min(as.matrix( beta, nrow=4))
 lvq <- beta[lv]
-
-
-#c(i, which.min(as.matrix(pqv,lvq)))
-
-
-
-
 
 
 if (pqv <= lvq && pqv < 10) {
@@ -672,7 +635,7 @@ if(pq == 1) {
 c(fcstm, fcstu,fcstl)
  
 }
-#stopCluster(cl)  
+stopCluster(cl)  
 
   
   
