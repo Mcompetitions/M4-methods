@@ -274,7 +274,7 @@ cross_validation <-function(ts=NULL, method=c('holt', 'theta', 'ets', 'naive', '
 
 
   
-  yearly_model <- 
+  quarterly_model <- 
   foreach(i = 1:n, .combine = 'rbind', .packages=c('zoo','forecast')) %dopar% {
   raw_data <- ts(na.trim(mydata[,i], sides = "right"), f=4)
   train <- subset(raw_data, end = (length(raw_data)-8))
@@ -664,9 +664,9 @@ if(pq == 1) {
 }
 stopCluster(cl)  
 
-  fcstm <- yearly_model[,1:8]  
-  fcstu <- yearly_model[,9:16]  
-  fcstl <- yearly_model[,17:24]  
+  fcstm <- quarterly_model[,1:8]  
+  fcstu <- quarterly_model[,9:16]  
+  fcstl <- quarterly_model[,17:24]  
   
   dir.create(file.path(getwd(), 'output'), showWarnings = FALSE)
   
