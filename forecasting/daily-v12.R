@@ -1,13 +1,8 @@
 
-#install.packages(c("zoo","forecast","doParallel"))
-#install.packages("forecast")
-#install.packages("curl")
+install.packages(c("zoo","forecast","doParallel","rstudioapi"))
 library(zoo)
-library(curl)
 library(forecast)
 library(doParallel)
-#library(data.table)
-install.packages("rstudioapi") 
 library(rstudioapi)
 
 rm(list = ls())
@@ -21,7 +16,7 @@ setwd(dirname(current_path))
 mydata <- data.frame(t(read.csv("input/daily.csv", header=FALSE)))
 n <- ncol(mydata)
 
-
+#################################smape function
 smape_cal <- function(forecasts, outsample){
   
   outsample <- as.numeric(outsample) ; forecasts<-as.numeric(forecasts)
@@ -30,7 +25,7 @@ smape_cal <- function(forecasts, outsample){
 }
 
 
-
+#####################################cross validation function
 cross_validation <-function(ts=NULL, method=c('holt', 'theta', 'ets', 'naive', 'Dholt', 'arima', 'tbats', 'str', 'loets','lotheta','loarima'),
                             error=c('RMSE'), step_ahead=1, start=1)
 {
@@ -239,16 +234,6 @@ cross_validation <-function(ts=NULL, method=c('holt', 'theta', 'ets', 'naive', '
 
 
 
-
-
-
-
-#error_tbats <- matrix(NA, nrow=1, ncol = n)
-#error_af <- matrix(NA, nrow=1, ncol = n)
-#error_com <- matrix(NA, nrow=1, ncol = n)
-
-
-  
   yearly_model <- 
   foreach(i = 1:n, .combine = 'rbind', .packages=c('zoo','forecast')) %dopar% {
   raw_data <- ts(na.trim(mydata[,i], sides = "right"), f=frequency(na.trim(mydata[,i], sides = "right")))
@@ -257,13 +242,10 @@ cross_validation <-function(ts=NULL, method=c('holt', 'theta', 'ets', 'naive', '
 
   
   
-  #lambda_test <- BoxCox.lambda(train)
-  #######################TBATS###############
-  
   fit_tbats <- tbats(train)    #1
   fcst_tbats <- forecast(fit_tbats, h=14)
   error_tbats <- smape_cal(fcst_tbats$mean,test)
-  ######################AF##################
+  
   fcst_arima <- forecast(auto.arima(train, approximation = FALSE, stepwise = FALSE), h=14) #2
   error_arima<- smape_cal(fcst_arima$mean,test)
 
@@ -275,9 +257,7 @@ cross_validation <-function(ts=NULL, method=c('holt', 'theta', 'ets', 'naive', '
   
   com1 <- (fcst_tbats$mean + fcst_arima$mean + fcst_ets2$mean)/3 #5
   error_com1 <- smape_cal(com1,test)
-  
-  ################################NAIVE
-  
+ 
   
   fcst_theta <- thetaf(train, h=14)    #6
   error_theta <- smape_cal(fcst_theta$mean,test)
@@ -338,10 +318,6 @@ cross_validation <-function(ts=NULL, method=c('holt', 'theta', 'ets', 'naive', '
   
   alpha <- c(error_tbats,error_arima,error_ets1,error_ets2,error_com1,error_theta,error_avg,error_naive,error_ses1,error_ses2,
              error_ses3,error_holt,error_Dholt,error_com2, error_com3,error_com4,error_com5,error_com6,error_com7,error_com8, error_loets,error_lotheta, error_loarima)
-  
-  #c(i,which.min(as.matrix( alpha, nrow=20)),error_tbats,error_arima,error_ets1,error_ets2,error_com1,error_theta,error_avg,error_naive,error_ses1,
-  #error_ses2,error_ses3,error_holt,error_Dholt,error_com2, error_com3,error_com4,error_com5,error_com6,error_com7,error_com8,alpha[which.min(as.matrix( alpha, nrow=20))] )
- 
   
   
    
@@ -570,7 +546,7 @@ if (pqv <= 3) {
  c(fcstm, fcstu, fcstl)
  
 }
-#stopCluster(cl)  
+stopCluster(cl)  
 
   
   
