@@ -1,14 +1,9 @@
 
-install.packages(c("zoo","forecast","doParallel"))
-install.packages("forecast")
-install.packages("curl")
+install.packages(c("zoo","forecast","doParallel","rstudioapi"))
 library(zoo)
-library(curl)
 library(forecast)
 library(doParallel)
 library(data.table)
-
-install.packages("rstudioapi")
 library(rstudioapi)
 
 rm(list = ls())
@@ -16,13 +11,14 @@ no_cores <- detectCores()
 registerDoParallel(cores=no_cores)
 cl <- makeCluster(no_cores)
 
+
 current_path <- getActiveDocumentContext()$path 
 setwd(dirname(current_path))
 
 mydata <- data.frame(t(read.csv("input/monthly.csv", header=FALSE)))
 n <- ncol(mydata)
 
-
+#########################smape function
 smape_cal <- function(forecasts, outsample){
   
   outsample <- as.numeric(outsample) ; forecasts<-as.numeric(forecasts)
@@ -31,7 +27,7 @@ smape_cal <- function(forecasts, outsample){
 }
 
 
-
+##########################cross validation function
 cross_validation <-function(ts=NULL, method=c('holt', 'theta', 'ets', 'naive', 'Dholt', 'arima', 'tbats','stla','stle','stlt','loets','lotheta','loarima'),
                             error=c('RMSE'), step_ahead=1, start=1)
 {
@@ -270,19 +266,6 @@ cross_validation <-function(ts=NULL, method=c('holt', 'theta', 'ets', 'naive', '
 
 
 
-
-
-
-
-
-#error_tbats <- matrix(NA, nrow=1, ncol = n)
-#error_af <- matrix(NA, nrow=1, ncol = n)
-#error_com <- matrix(NA, nrow=1, ncol = n)
-
-#n=2
-
-
-  
   yearly_model <- 
   foreach(i = 1:n, .combine = 'rbind', .packages=c('zoo','forecast')) %dopar% {
   raw_data <- ts(na.trim(mydata[,i], sides = "right"), f=12)
@@ -291,33 +274,21 @@ cross_validation <-function(ts=NULL, method=c('holt', 'theta', 'ets', 'naive', '
 
   raw_data2 <- ts(na.trim(mydata[,i], sides = "right"), f=1)
   
-  #lambda_test <- BoxCox.lambda(train)
-  #######################TBATS###############
-  #ifelse(length(raw_data)<=250,fcst_tbats <- forecast(tbats(train), h=18),error_tbats <- Inf)
+
+ 
   tb1 <- forecast(tbats(train), h=18)
   ifelse(length(raw_data)<=1000,error_tbats <- smape_cal(tb1$mean,test),error_tbats <- Inf)  #1
-  #fit_tbats <- tbats(train)    
-  #fcst_tbats <- forecast(fit_tbats, h=18)
-  #error_tbats <- smape_cal(fcst_tbats$mean,test)
-  ######################AF##################
-  
+
   ar1 <- forecast(auto.arima(train), h=18)
   ifelse(length(raw_data)<=1000,error_arima <- smape_cal(ar1$mean,test),error_arima <- Inf)
-  #fcst_arima <- forecast(auto.arima(train, lambda = lambda_test), h=18) #2
-  #error_arima<- smape_cal(fcst_arima$mean,test) 
 
-  #fcst_ets1 <- forecast(ets(train,lambda = lambda_test), h=18) #3
-  #error_ets1<- smape_cal(fcst_ets1$mean,test) 
   
   fcst_ets2 <- forecast(ets(train), h=18)  #3
   error_ets2<- smape_cal(fcst_ets2$mean,test) 
   
   
   ifelse(length(raw_data)<=1000,error_com1 <- smape_cal((tb1$mean + ar1$mean + fcst_ets2$mean)/3,test),error_com1 <- Inf)    #4
-  #com1 <- (fcst_tbats$mean + fcst_arima$mean + fcst_ets2$mean)/3 
-  #error_com1 <- smape_cal(com1,test)[5]
-  
-  ################################NAIVE
+
   
   fcst_stla <- try(stlf(train, h=18, forecastfunction = thetaf),silent = TRUE)    #5
   error_stla <- tryCatch(error_stla<- smape_cal(fcst_stla$mean,test) ,
@@ -328,11 +299,9 @@ cross_validation <-function(ts=NULL, method=c('holt', 'theta', 'ets', 'naive', '
                          error = function(e) {return(Inf)})   
   
   
-  #error_nnetar <- tryCatch(ifelse(length(raw_data)<=250,error_nnetar <- smape_cal(forecast(nnetar(train), h=18)$mean, test) ,error_nnetar <- Inf),error = function(e) {return(Inf)})   #7
-  error_nnetar <- Inf
-  #fcst_nnetar <- forecast(nnetar(train), h=18)                        
-  #error_nnetar <- smape_cal(fcst_nnetar$mean, test) 
-  
+   
+  error_nnetar <- Inf  #7
+
   
   
   fcst_theta <- try(thetaf(train, h=18), silent = TRUE)    #8
@@ -363,17 +332,12 @@ cross_validation <-function(ts=NULL, method=c('holt', 'theta', 'ets', 'naive', '
   
   com2 <- (fcst_theta$mean+fcst_avg+fcst_naive$mean+fcst_ses1$mean+fcst_ses2$mean+fcst_ses3$mean+fcst_holt$mean+fcst_Dholt$mean)/8 #16
   error_com2 <- smape_cal(com2,test)
-  
-  
+   
   ifelse(length(raw_data)<=1000,error_com3 <- smape_cal((ar1$mean+fcst_ets2$mean+fcst_theta$mean)/3,test),error_com3 <- Inf)     #17
-  #com3 <- (fcst_arima$mean+fcst_ets1$mean+fcst_ets2$mean+fcst_theta$mean)/4 
-  #error_com3 <- smape_cal(com3,test)
   
   ifelse((is.infinite(error_theta) | length(raw_data)>1000),error_com4 <- Inf, com4 <- (ar1$mean+fcst_theta$mean)/2)   #18
   ifelse((is.infinite(error_theta) | length(raw_data)>1000),error_com4 <- Inf, error_com4 <- smape_cal(com4,test))
-  #ifelse(length(raw_data)<=250,error_com4 <- smape_cal((forecast(auto.arima(train), h=18)$mean+fcst_theta$mean)/2,test),error_com4 <- Inf)
-  #com4 <- (fcst_arima$mean+fcst_theta$mean)/2 #19
-  #error_com4 <- smape_cal(com4,test)
+
 
   ifelse(is.infinite(error_theta),error_com5 <- Inf, com5 <- (fcst_ets2$mean+fcst_theta$mean)/2)  #19
   ifelse(is.infinite(error_theta),error_com5 <- Inf, error_com5 <- smape_cal(com5,test)) 
@@ -385,11 +349,8 @@ cross_validation <-function(ts=NULL, method=c('holt', 'theta', 'ets', 'naive', '
   error_com7 <- smape_cal(com7,test)
   
   ifelse(length(raw_data)<=1000,error_com8 <- smape_cal((ar1$mean+fcst_ets2$mean)/2,test),error_com8 <- Inf) #22
-  #com8 <- (fcst_arima$mean+ fcst_ets2$mean)/2 
-  #error_com8 <- smape_cal(com8,test)
-  
-  
-  fcst_snaive <- snaive(train, h=18)     #23
+
+   fcst_snaive <- snaive(train, h=18)     #23
   error_snaive <- smape_cal(fcst_snaive$mean,test) 
   
   
@@ -398,24 +359,16 @@ cross_validation <-function(ts=NULL, method=c('holt', 'theta', 'ets', 'naive', '
   
   ifelse((is.infinite(error_stla) | is.infinite(error_theta) | length(raw_data)>1000),error_com10 <- Inf, com10 <- (fcst_stla$mean + fcst_stle$mean + fcst_ets2$mean + ar1$mean + fcst_theta$mean)/5)   #25
   ifelse((is.infinite(error_stla) | is.infinite(error_theta) | length(raw_data)>1000),error_com10 <- Inf, error_com10 <- smape_cal(com10,test))
-  
- 
-  #fcst_ens <- forecast(baggedModel(train), h=18)
-  #error_ens <- smape_cal(fcst_ens$mean, test)
-  
+   
   
   alpha <- c(error_tbats,error_arima,error_ets2,error_com1,error_stla,error_stle,error_nnetar,error_theta,error_avg,error_naive,error_ses1,error_ses2,
              error_ses3,error_holt,error_Dholt,error_com2, error_com3,error_com4,error_com5,error_com6,error_com7,error_com8,error_snaive, error_com9,error_com10)
-  
-  #c(i,which.min(as.matrix( alpha, nrow=26)),error_tbats,error_arima,error_ets1,error_ets2,error_com1,error_stla,error_stle,error_nnetar,error_theta,error_avg,error_naive,error_ses1,error_ses2,
-    #error_ses3,error_holt,error_Dholt,error_com2, error_com3,error_com4,error_com5,error_com6,error_com7,error_com8,error_snaive, error_com9,error_com10,alpha[which.min(as.matrix( alpha, nrow=26))] )
- 
   
   
    
 pq <- which.min(as.matrix( alpha, nrow=25))
 pqv <- alpha[pq]
-#lambda_test2 <- BoxCox.lambda(raw_data)
+
 if (pqv <= 5) {
 if(pq == 1) {
               fcst <- forecast(tbats(raw_data), h=18)
@@ -700,7 +653,7 @@ if(pq == 1) {
   
  c(fcstm,fcstu,fcstl)
 }
-#stopCluster(cl)  
+stopCluster(cl)  
 
   
   
