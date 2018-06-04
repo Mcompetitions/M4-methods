@@ -7,7 +7,7 @@ library(data.table)
 library(rstudioapi)
 
 rm(list = ls())
-no_cores <- detectCores()-1
+no_cores <- detectCores()
 registerDoParallel(cores=no_cores) 
 cl <- makeCluster(no_cores)
 
@@ -218,7 +218,7 @@ cross_validation <-function(ts=NULL, method=c('snaive', 'theta', 'ets', 'naive',
 
 
   
-  yearly_model <- 
+  weekly_model <- 
   foreach(i = 1:n, .combine = 'rbind', .packages=c('zoo','forecast')) %dopar% {
   raw_data <- ts(na.trim(mydata[,i], sides = "right"), f=52)
   train <- subset(raw_data, end = (length(raw_data)-26))
@@ -640,9 +640,9 @@ stopCluster(cl)
   
   
   
-fcstm <- yearly_model[,1:13]  
-fcstu <- yearly_model[,14:26]  
-fcstl <- yearly_model[,27:39]  
+fcstm <- weekly_model[,1:13]  
+fcstu <- weekly_model[,14:26]  
+fcstl <- weekly_model[,27:39]  
 
 dir.create(file.path(getwd(), 'output'), showWarnings = FALSE)
 
