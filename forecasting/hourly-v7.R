@@ -1,16 +1,15 @@
 
-install.packages(c("zoo","forecast","doParallel"))
-install.packages("forecast")
+install.packages(c("zoo","forecast","doParallel","rstudioapi"))
 install.packages("curl")
 library(zoo)
 library(curl)
 library(forecast)
 library(doParallel)
 library(data.table)
-install.packages("rstudioapi") 
 library(rstudioapi)
 
 rm(list = ls())
+
 no_cores <- detectCores()
 registerDoParallel(cores=no_cores) 
 cl <- makeCluster(no_cores)
@@ -21,7 +20,7 @@ setwd(dirname(current_path))
 mydata <- data.frame(t(read.csv("input/hourly.csv", header=FALSE)))
 n <- ncol(mydata)
 
-
+#############################################smape function
 smape_cal <- function(forecasts, outsample){
   
   outsample <- as.numeric(outsample) ; forecasts<-as.numeric(forecasts)
@@ -29,6 +28,7 @@ smape_cal <- function(forecasts, outsample){
   return(smape)
 }
 
+#############################################Cross validation function
 cross_validation <-function(ts=NULL, method=c('holt','Dholt', 'theta', 'tbats', 'naive', 'snaive'),
                             error=c('RMSE'), step_ahead=1, start=1)
 {
@@ -154,17 +154,6 @@ cross_validation <-function(ts=NULL, method=c('holt','Dholt', 'theta', 'tbats', 
 }
 
 
-mydata <- data.frame(t(read.csv("C:/Users/arsa nikzad/Desktop/M4/Input/hourly.csv", header=FALSE)))
-
-
-n <- ncol(mydata)
-
-#error_tbats <- matrix(NA, nrow=1, ncol = n)
-#error_af <- matrix(NA, nrow=1, ncol = n)
-#error_com <- matrix(NA, nrow=1, ncol = n)
-
-
-
   
   yearly_model <- 
   foreach(i = 1:n, .combine = 'rbind', .packages=c('zoo','forecast')) %dopar% {
@@ -174,7 +163,7 @@ n <- ncol(mydata)
 
   
   
-  #lambda_test <- BoxCox.lambda(train)
+ 
   #######################TBATS###############
   
   fit_tbats <- tbats(train)    #1
@@ -186,7 +175,6 @@ n <- ncol(mydata)
   for(j in 1:12)
   {
     bestfit <- auto.arima(train, xreg=fourier(train, K=j), seasonal=FALSE)
-    #rmse_model[j,]<- accuracy(bestfit)[,2]
     aic_model[j,] <- bestfit$aic
   }
   k=which.min(aic_model)
@@ -282,9 +270,7 @@ n <- ncol(mydata)
   alpha <- c(error_tbats,error_af,error_com1,error_stla,error_stle,error_nnetar,error_theta,error_avg,error_naive,error_ses1,error_ses2,
              error_ses3,error_holt,error_Dholt,error_com2, error_com3,error_com4,error_com5,error_com6,error_com7,error_com8,error_snaive, error_com9,error_com10,error_com11,error_com12)
   
- # c(i,which.min(as.matrix( alpha, nrow=26)),error_tbats,error_af,error_com1,error_stla,error_stle,error_nnetar,error_theta,error_avg,error_naive,error_ses1,error_ses2,
-    #error_ses3,error_holt,error_Dholt,error_com2, error_com3,error_com4,error_com5,error_com6,error_com7,error_com8,error_snaive, error_com9,error_com10,error_com11,error_com12,alpha[which.min(as.matrix( alpha, nrow=26))] )
- 
+
   
   
    
@@ -325,7 +311,7 @@ pqv <- alpha[pq]
     
     #c(i, which.min(as.matrix(pqv,lvq)))
 
-##lambda_test2 <- BoxCox.lambda(raw_data)
+
 if (pqv <= lvq) {
 if(pq == 1) {
               fcst <- forecast(tbats(raw_data), h=48)
@@ -551,7 +537,7 @@ if(pq == 1) {
  c(fcstm, fcstu,fcstl)
  
 }
-#stopCluster(cl)  
+stopCluster(cl)  
 
   
   fcstm <- yearly_model[,1:48]  
