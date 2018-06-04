@@ -161,15 +161,16 @@ cross_validation <-function(ts=NULL, method=c('holt','Dholt', 'theta', 'tbats', 
   train <- subset(raw_data, end = (length(raw_data)-48))
   test <- subset(raw_data, start = (length(raw_data)-47))
 
-  
+   raw_data2 <- msts(na.trim(mydata[,i], sides = "right"), seasonal.periods = c(24,168))
+   train2 <- subset(raw_data2, end = (length(raw_data2)-48))
+   test2 <- subset(raw_data2, start = (length(raw_data2)-47))
   
  
-  #######################TBATS###############
+
   
   fit_tbats <- tbats(train)    #1
   fcst_tbats <- forecast(fit_tbats, h=48)
   error_tbats <- smape_cal(fcst_tbats$mean,test)
-  ######################AF##################
   
   aic_model<- matrix(NA, nrow=12, ncol=1)
   for(j in 1:12)
@@ -181,14 +182,11 @@ cross_validation <-function(ts=NULL, method=c('holt','Dholt', 'theta', 'tbats', 
   bestfit <- auto.arima(train, xreg=fourier(train, K=k), seasonal=FALSE)
   fcst_af <- forecast(bestfit, xreg = fourier(train, K=k, h=48))                    #2
   error_af<- smape_cal(fcst_af$mean,test)
-  
-  
-
+ 
   
   com1 <- (fcst_tbats$mean + fcst_af$mean)/2 #3
   error_com1 <- smape_cal(com1,test)
   
-  ################################NAIVE
   
   fcst_stla <- try(stlf(train, h=48,forecastfunction = thetaf),silent = TRUE)    #4
   error_stla <- tryCatch(error_stla<- smape_cal(fcst_stla$mean,test) ,
@@ -201,8 +199,7 @@ cross_validation <-function(ts=NULL, method=c('holt','Dholt', 'theta', 'tbats', 
   fcst_nnetar <- forecast(nnetar(train), h=48)                          #6
   error_nnetar <- smape_cal(fcst_nnetar$mean, test) 
   
-  
-  
+    
   fcst_theta <- thetaf(train, h=48)    #7
   error_theta <- smape_cal(fcst_theta$mean,test) 
   
@@ -248,11 +245,9 @@ cross_validation <-function(ts=NULL, method=c('holt','Dholt', 'theta', 'tbats', 
   
   com8 <- (fcst_ses1$mean+ fcst_ses2$mean + fcst_ses3$mean)/3 #21
   error_com8 <- smape_cal(com8,test)
-  
-  
+ 
   fcst_snaive <- snaive(train, h=48)     #22
   error_snaive <- smape_cal(fcst_snaive$mean,test) 
-  
   
   ifelse(is.infinite(error_stla),error_com9 <- Inf, com9 <- (fcst_stla$mean + fcst_stle$mean)/2) #23
   ifelse(is.infinite(error_stla),error_com9 <- Inf, error_com9 <- smape_cal(com9,test))
@@ -271,16 +266,11 @@ cross_validation <-function(ts=NULL, method=c('holt','Dholt', 'theta', 'tbats', 
              error_ses3,error_holt,error_Dholt,error_com2, error_com3,error_com4,error_com5,error_com6,error_com7,error_com8,error_snaive, error_com9,error_com10,error_com11,error_com12)
   
 
-  
-  
    
 pq <- which.min(as.matrix( alpha, nrow=26))
 pqv <- alpha[pq]
 
-  ############################################
-    raw_data2 <- msts(na.trim(mydata[,i], sides = "right"), seasonal.periods = c(24,168))
-    train2 <- subset(raw_data2, end = (length(raw_data2)-48))
-    test2 <- subset(raw_data2, start = (length(raw_data2)-47))
+
 
     fit_tbats2 <- tbats(train2)    #1
     fcst_tbats2 <- forecast(fit_tbats2, h=48)
@@ -307,9 +297,6 @@ pqv <- alpha[pq]
     beta <- c(error_tbats2,error_stla2,error_stle2,error_stlar)
     lv <- which.min(as.matrix( beta, nrow=4))
     lvq <- beta[lv]
-    
-    
-    #c(i, which.min(as.matrix(pqv,lvq)))
 
 
 if (pqv <= lvq) {
