@@ -16,8 +16,7 @@ source("../M4/model_choice_M4.R")
 # Calculates M4 error on the test set.
 # predictions - a list of forecasts
 # seriess ----- a sublist of splitM4 output
-# criteria ---- a named list of criteria to calculate values of. Just use
-#               M4.criteria from M4prep.R
+# criteria ---- a named list of criteria to calculate values of
 # owa --------- whether or not to also calculate OWA
 # naive2res --- results of naive2 benchmark on seriess, required if owa == T
 checkM4err = function(predictions, seriess, criteria, 
