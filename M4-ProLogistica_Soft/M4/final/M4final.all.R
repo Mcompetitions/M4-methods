@@ -48,7 +48,7 @@ M4.daily.d = prepare.M4.fcst.df(M4.daily, M4.daily.fc)
 M4.hourly.d = prepare.M4.fcst.df(M4.hourly, M4.hourly.fc)
 
 col.names = c("id", sapply(1:48, function(i) paste("F", i, sep = "")))
-path = file.path(M4.final.path.future, "M4.forecasts.prologistica.csv")
+path = "M4.forecasts.prologistica.csv"
 write.table(matrix(ncol = 49, nrow = 0), 
             file = path, col.names = col.names, quote = F, sep = ",")
 
