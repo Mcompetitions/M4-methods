@@ -51,7 +51,7 @@ source("criteria.R")
 #                   single score for a model. One of "mean", "max", "median",
 #                   "min" or a number in (0, 1) representing the base for
 #                   exponential weights.
-# old.result ------ an output of another test.models call. The settings
+# old.result ------ an output of another test.models call, for updating results
 # model.choice ---- a function returning a list of models for a given type of
 #                   series. See ModelChoice.M4 defined in model_choice_M4.R.
 #                   To replicate our result, use model.choice = ModelChoice.M4.
