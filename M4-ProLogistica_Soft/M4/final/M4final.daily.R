@@ -21,12 +21,12 @@ final.forecast.daily = function(data) {
   test = test.models(
     seriess = data,
     seriess.info = classes,
-    num_samples = 8,
-    aggregation = 0.5,
+    num_samples = 8, # N parameter (number of prefixes to consider)
+    aggregation = 0.5, # f function (exponential weights with base 0.5)
     model.choice = ModelChoice.M4
   )
   
-  weights = combine.models(test, weightsfn = weighting.squared)
+  weights = combine.models(test, weightsfn = weighting.squared) # g function (square weights)
   future.preds = predict.models(data, weights, preds)
   
   # Set naive forecast for "stable" series
