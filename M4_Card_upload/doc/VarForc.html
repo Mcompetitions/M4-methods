@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="oxdoc.css">
+    
+    <title>VarForc - </title>
+  </head>
+<body>
+<div class="page-frame">
+<div class="header">
+[ <a href="index.html">Project home</a>
+ | <a href="idx.html">Index</a> ]
+</div>
+
+<p><h1>VarForc</h1>
+
+
+<!-- Overview -->
+<p><h2>Overview</h2><p></p><a href="VarForc.html#VarForc">VarForc</a> <br><p>
+<dl></dl>
+
+<!-- VarForc -->
+<a id="VarForc"></a>
+<p><h2>VarForc  summary</h2>
+
+<!-- Members of VarForc -->
+<p><table class="method_table">
+<tr><td colspan="2" class="header">Constructor/destructor of VarForc</td></tr>
+<tr><td class="declaration">
+<a href="VarForc.html#VarForc___VarForc">VarForc</a>
+</td><td class="description">
+</td></tr>
+<tr><td colspan="2" class="header">Public data members of VarForc</td></tr>
+<tr><td class="declaration">
+<a href="VarForc.html#VarForc___aforc">aforc</a>
+</td><td class="description">
+array[cF] with [cH_f][1] matrices with forecasts  </td></tr>
+<tr><td class="declaration">
+<a href="VarForc.html#VarForc___aforc_info">aforc_info</a>
+</td><td class="description">
+array[cF] matrix[7][1] start of forecast, MAPE  </td></tr>
+<tr><td class="declaration">
+<a href="VarForc.html#VarForc___aforc_lu">aforc_lu</a>
+</td><td class="description">
+array[cF] with [cH_f][2] matrices with forecast lower and upper bounds (or <>)  </td></tr>
+<tr><td class="declaration">
+<a href="VarForc.html#VarForc___aproperties">aproperties</a>
+</td><td class="description">
+array of preperties  </td></tr>
+<tr><td class="declaration">
+<a href="VarForc.html#VarForc___asforc">asforc</a>
+</td><td class="description">
+array[cF] of forecast descriptions  </td></tr>
+<tr><td class="declaration">
+<a href="VarForc.html#VarForc___freq">freq</a>
+</td><td class="description">
+seasonal frequency (can be different from database specification)  </td></tr>
+<tr><td class="declaration">
+<a href="VarForc.html#VarForc___freq2">freq2</a>
+</td><td class="description">
+secondary frequency (freq*freq2)  </td></tr>
+<tr><td class="declaration">
+<a href="VarForc.html#VarForc___max">max</a>
+</td><td class="description">
+maximum value  </td></tr>
+<tr><td class="declaration">
+<a href="VarForc.html#VarForc___min">min</a>
+</td><td class="description">
+minimum value  </td></tr>
+<tr><td class="declaration">
+<a href="VarForc.html#VarForc___name">name</a>
+</td><td class="description">
+name of variable  </td></tr>
+<tr><td class="declaration">
+<a href="VarForc.html#VarForc___t0">t0</a>
+</td><td class="description">
+database index of first valid observation for sample which may have gaps  </td></tr>
+<tr><td class="declaration">
+<a href="VarForc.html#VarForc___t0a">t0a</a>
+</td><td class="description">
+database index of first valid observation  </td></tr>
+<tr><td class="declaration">
+<a href="VarForc.html#VarForc___t1">t1</a>
+</td><td class="description">
+start of trailing contiguous block used for estimation  </td></tr>
+<tr><td class="declaration">
+<a href="VarForc.html#VarForc___t1a">t1a</a>
+</td><td class="description">
+start of full trailing contiguous block  </td></tr>
+<tr><td class="declaration">
+<a href="VarForc.html#VarForc___t2">t2</a>
+</td><td class="description">
+database index of last estimation observation, forecasting starts at t2 + 1;  </td></tr>
+<tr><td class="declaration">
+<a href="VarForc.html#VarForc___t2a">t2a</a>
+</td><td class="description">
+database index of last valid observation, forecasting starts at t2 + 1;  </td></tr>
+<tr><td class="declaration">
+<a href="VarForc.html#VarForc___type">type</a>
+</td><td class="description">
+variable type  </td></tr>
+</table>
+
+<!-- Details for VarForc Functions -->
+<a id="VarForc.Functions"></a>
+<p><h2><a href="VarForc.html#VarForc">VarForc</a>  Functions details</h2>
+
+<!-- Entity VarForc -->
+<a id="VarForc___VarForc"></a>
+<p><h3>VarForc</h3>
+<p></p><span class="declaration">VarForc :: VarForc ( const sY , const iT0 , const iT1 , const iT2 , const iFreq )</span>
+<dl>
+<dt></dt><dd></dd>
+<dd>
+<dl>
+</dl>
+</dd>
+</dl>
+
+<!-- Details for VarForc Data -->
+<a id="VarForc.Data"></a>
+<p><h2><a href="VarForc.html#VarForc">VarForc</a>  Data details</h2>
+
+<!-- Entity aforc -->
+<a id="VarForc___aforc"></a>
+<p><h3>aforc</h3>
+<p></p><span class="declaration"> decl aforc [public]</span>
+<dl>
+<dt></dt><dd>array[cF] with [cH_f][1] matrices with forecasts
+</dd>
+<dd><dl>
+</dl></dd>
+</dl>
+
+<hr>
+
+<!-- Entity aforc_info -->
+<a id="VarForc___aforc_info"></a>
+<p><h3>aforc_info</h3>
+<p></p><span class="declaration"> decl aforc_info [public]</span>
+<dl>
+<dt></dt><dd>array[cF] matrix[7][1] start of forecast, MAPE
+</dd>
+<dd><dl>
+</dl></dd>
+</dl>
+
+<hr>
+
+<!-- Entity aforc_lu -->
+<a id="VarForc___aforc_lu"></a>
+<p><h3>aforc_lu</h3>
+<p></p><span class="declaration"> decl aforc_lu [public]</span>
+<dl>
+<dt></dt><dd>array[cF] with [cH_f][2] matrices with forecast lower and upper bounds (or <>)
+</dd>
+<dd><dl>
+</dl></dd>
+</dl>
+
+<hr>
+
+<!-- Entity aproperties -->
+<a id="VarForc___aproperties"></a>
+<p><h3>aproperties</h3>
+<p></p><span class="declaration"> decl aproperties [public]</span>
+<dl>
+<dt></dt><dd>array of preperties
+</dd>
+<dd><dl>
+</dl></dd>
+</dl>
+
+<hr>
+
+<!-- Entity asforc -->
+<a id="VarForc___asforc"></a>
+<p><h3>asforc</h3>
+<p></p><span class="declaration"> decl asforc [public]</span>
+<dl>
+<dt></dt><dd>array[cF] of forecast descriptions
+</dd>
+<dd><dl>
+</dl></dd>
+</dl>
+
+<hr>
+
+<!-- Entity freq -->
+<a id="VarForc___freq"></a>
+<p><h3>freq</h3>
+<p></p><span class="declaration"> decl freq [public]</span>
+<dl>
+<dt></dt><dd>seasonal frequency (can be different from database specification)
+</dd>
+<dd><dl>
+</dl></dd>
+</dl>
+
+<hr>
+
+<!-- Entity freq2 -->
+<a id="VarForc___freq2"></a>
+<p><h3>freq2</h3>
+<p></p><span class="declaration"> decl freq2 [public]</span>
+<dl>
+<dt></dt><dd>secondary frequency (freq*freq2)
+</dd>
+<dd><dl>
+</dl></dd>
+</dl>
+
+<hr>
+
+<!-- Entity max -->
+<a id="VarForc___max"></a>
+<p><h3>max</h3>
+<p></p><span class="declaration"> decl max [public]</span>
+<dl>
+<dt></dt><dd>maximum value
+</dd>
+<dd><dl>
+</dl></dd>
+</dl>
+
+<hr>
+
+<!-- Entity min -->
+<a id="VarForc___min"></a>
+<p><h3>min</h3>
+<p></p><span class="declaration"> decl min [public]</span>
+<dl>
+<dt></dt><dd>minimum value
+</dd>
+<dd><dl>
+</dl></dd>
+</dl>
+
+<hr>
+
+<!-- Entity name -->
+<a id="VarForc___name"></a>
+<p><h3>name</h3>
+<p></p><span class="declaration"> decl name [public]</span>
+<dl>
+<dt></dt><dd>name of variable
+</dd>
+<dd><dl>
+</dl></dd>
+</dl>
+
+<hr>
+
+<!-- Entity t0 -->
+<a id="VarForc___t0"></a>
+<p><h3>t0</h3>
+<p></p><span class="declaration"> decl t0 [public]</span>
+<dl>
+<dt></dt><dd>database index of first valid observation for sample which may have gaps
+</dd>
+<dd><dl>
+</dl></dd>
+</dl>
+
+<hr>
+
+<!-- Entity t0a -->
+<a id="VarForc___t0a"></a>
+<p><h3>t0a</h3>
+<p></p><span class="declaration"> decl t0a [public]</span>
+<dl>
+<dt></dt><dd>database index of first valid observation
+</dd>
+<dd><dl>
+</dl></dd>
+</dl>
+
+<hr>
+
+<!-- Entity t1 -->
+<a id="VarForc___t1"></a>
+<p><h3>t1</h3>
+<p></p><span class="declaration"> decl t1 [public]</span>
+<dl>
+<dt></dt><dd>start of trailing contiguous block used for estimation
+</dd>
+<dd><dl>
+</dl></dd>
+</dl>
+
+<hr>
+
+<!-- Entity t1a -->
+<a id="VarForc___t1a"></a>
+<p><h3>t1a</h3>
+<p></p><span class="declaration"> decl t1a [public]</span>
+<dl>
+<dt></dt><dd>start of full trailing contiguous block
+</dd>
+<dd><dl>
+</dl></dd>
+</dl>
+
+<hr>
+
+<!-- Entity t2 -->
+<a id="VarForc___t2"></a>
+<p><h3>t2</h3>
+<p></p><span class="declaration"> decl t2 [public]</span>
+<dl>
+<dt></dt><dd>database index of last estimation observation, forecasting starts at t2 + 1;
+</dd>
+<dd><dl>
+</dl></dd>
+</dl>
+
+<hr>
+
+<!-- Entity t2a -->
+<a id="VarForc___t2a"></a>
+<p><h3>t2a</h3>
+<p></p><span class="declaration"> decl t2a [public]</span>
+<dl>
+<dt></dt><dd>database index of last valid observation, forecasting starts at t2 + 1;
+</dd>
+<dd><dl>
+</dl></dd>
+</dl>
+
+<hr>
+
+<!-- Entity type -->
+<a id="VarForc___type"></a>
+<p><h3>type</h3>
+<p></p><span class="declaration"> decl type [public]</span>
+<dl>
+<dt></dt><dd>variable type
+</dd>
+<dd><dl>
+</dl></dd>
+</dl>
+
+<!-- Details for VarForc Enums -->
+<a id="VarForc.Enums"></a>
+<p><h2><a href="VarForc.html#VarForc">VarForc</a>  Enums details</h2>
+<p>None.</p>
+<hr>
+<div class="footer">Generated by <a href="http://oxdoc.sourceforge.net">oxdoc 0.992</a> &copy; Copyright 2005-2010 by Y. Zwols<br>
+Original filename: <code>VarForc.html</code></div>
+</div><!-- /page-frame -->
+</body>
+</html>

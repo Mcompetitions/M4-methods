@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="oxdoc.css">
+    
+    <title>ForecastAB - </title>
+  </head>
+<body>
+<div class="page-frame">
+<div class="header">
+[ <a href="index.html">Project home</a>
+ | <a href="idx.html">Index</a> ]
+</div>
+
+<p><h1>ForecastAB</h1>
+
+
+<!-- Overview -->
+<p><h2>Overview</h2><p></p><a href="ForecastAB.html#ForecastAB">ForecastAB</a>  : Modelbase<br><p>
+<dl></dl>
+
+<!-- ForecastAB -->
+<a id="ForecastAB"></a>
+<p><h2>ForecastAB  : Modelbase summary</h2>
+
+<!-- Members of ForecastAB -->
+<p><table class="method_table">
+<tr><td colspan="2" class="header">Constructor/destructor of ForecastAB</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___ForecastAB">ForecastAB</a>
+</td><td class="description">
+Constructor.</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___~ForecastAB">~ForecastAB</a>
+</td><td class="description">
+Destructor.</td></tr>
+<tr><td colspan="2" class="header">Public member functions of ForecastAB</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___Accuracy">Accuracy</a>
+</td><td class="description">
+Evaluates forecast accuracy.</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___AddForecasts">AddForecasts</a>
+</td><td class="description">
+Adds dynamic forecasts.</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___Calibrate">Calibrate</a>
+</td><td class="description">
+Forecast calibration.</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___Clear">Clear</a>
+</td><td class="description">
+Clears allocated objects.</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___Collect">Collect</a>
+</td><td class="description">
+Collects results.</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___CollectForecasts">CollectForecasts</a>
+</td><td class="description">
+Collect forecasts.</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___CollectIt">CollectIt</a>
+</td><td class="description">
+Collect results.</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___Decompose">Decompose</a>
+</td><td class="description">
+Simple decomposition through moving average filters.</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___Forecast">Forecast</a>
+</td><td class="description">
+Forecasts using AR(1).</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___ForecastDelta">ForecastDelta</a>
+</td><td class="description">
+Delta method: simple forecasting from damped unit root model.</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___ForecastNaive">ForecastNaive</a>
+</td><td class="description">
+Gets naive forecasts.</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___ForecastRho">ForecastRho</a>
+</td><td class="description">
+Rho method: simple forecasting from damped AR(1) model.</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___GetPackageName">GetPackageName</a>
+</td><td class="description">
+Returns package name.</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___GetPackageVersion">GetPackageVersion</a>
+</td><td class="description">
+Returns package version.</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___GetVarNames">GetVarNames</a>
+</td><td class="description">
+Returns names of selected variables  </td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___HasSeasonality">HasSeasonality</a>
+</td><td class="description">
+Tests of seasonality based on the ACF, chi^2(1).</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___Init">Init</a>
+</td><td class="description">
+Resets everything.</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___InitData">InitData</a>
+</td><td class="description">
+Initializes data for estimation.</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___IntervalAccuracy">IntervalAccuracy</a>
+</td><td class="description">
+Evaluates forecast interval accuracy.</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___IsUnivariate">IsUnivariate</a>
+</td><td class="description">
+Returns FALSE.</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___MA">MA</a>
+</td><td class="description">
+Various moving average filters.</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___MeanTest">MeanTest</a>
+</td><td class="description">
+Tests of non-zero mean
+  </td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___MSIS">MSIS</a>
+</td><td class="description">
+Computes a measure of forecast interval accuracy.</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___Report">Report</a>
+</td><td class="description">
+Reports on the selected variables.</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___SeasonalAnova">SeasonalAnova</a>
+</td><td class="description">
+ANOVA tests of seasonality, F(.,.).</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___SeasonalDummies">SeasonalDummies</a>
+</td><td class="description">
+Create the matrix of seasonal dummies.</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___SeasonalInfo">SeasonalInfo</a>
+</td><td class="description">
+Check for seasonality
+  </td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___SeasonalityTest">SeasonalityTest</a>
+</td><td class="description">
+Test of seasonality of the ACF, chi^2(1).</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___SeasonalityTests">SeasonalityTests</a>
+</td><td class="description">
+All tests of seasonality of the ACF, each chi^2(1).</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___SetCutBack">SetCutBack</a>
+</td><td class="description">
+Sets cut back for sample reduction.</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___SetHoldBack">SetHoldBack</a>
+</td><td class="description">
+Sets hold back for forecast evaluation.</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___SetLimit">SetLimit</a>
+</td><td class="description">
+Sets a limit on the sample size for forecasting.</td></tr>
+<tr><td colspan="2" class="header">Public enums of ForecastAB</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___enum2">enum2</a>
+</td><td class="description">
+Y_VAR, X_VAR</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___enum3">enum3</a>
+</td><td class="description">
+M_NONE, M_OLS</td></tr>
+<tr><td colspan="2" class="header">Protected enums of ForecastAB</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___enum1">enum1</a>
+</td><td class="description">
+TYPE_EMPTY, TYPE_VAR, TYPE_DETERMINISTIC</td></tr>
+<tr><td colspan="2" class="header">Protected data members of ForecastAB</td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___m_asY">m_asY</a>
+</td><td class="description">
+names of variables	array[m_cY]  </td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___m_aVarForc">m_aVarForc</a>
+</td><td class="description">
+VarForc values [1][m_cY]  </td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___m_cCutback">m_cCutback</a>
+</td><td class="description">
+cutback for sample reduction (ignored entirely)  </td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___m_cHoldback">m_cHoldback</a>
+</td><td class="description">
+holdback for forecast evaluation  </td></tr>
+<tr><td class="declaration">
+<a href="ForecastAB.html#ForecastAB___m_cLimit">m_cLimit</a>
+</td><td class="description">
+limit of sample size used for forecasting  </td></tr>
+</table>
+
+<!-- Details for ForecastAB Functions -->
+<a id="ForecastAB.Functions"></a>
+<p><h2><a href="ForecastAB.html#ForecastAB">ForecastAB</a>  : Modelbase Functions details</h2>
+
+<!-- Entity ForecastAB -->
+<a id="ForecastAB___ForecastAB"></a>
+<p><h3>ForecastAB</h3>
+<p></p><span class="declaration">ForecastAB :: ForecastAB ( )</span>
+<dl>
+<dt></dt><dd>Constructor.
+</dd>
+<dd>
+<dl>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity ~ForecastAB -->
+<a id="ForecastAB___~ForecastAB"></a>
+<p><h3>~ForecastAB</h3>
+<p></p><span class="declaration">ForecastAB :: ForecastAB ( )</span>
+<dl>
+<dt></dt><dd>Destructor.
+Destructor.
+</dd>
+<dd>
+<dl>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity Accuracy -->
+<a id="ForecastAB___Accuracy"></a>
+<p><h3>Accuracy</h3>
+<p></p><span class="declaration">static ForecastAB :: Accuracy ( const vForc , const vY , const vYest , const iFreq )</span>
+<dl>
+<dt></dt><dd>Evaluates forecast accuracy.
+</dd>
+<dd>
+<dl>
+<dt class="parameters">Parameters:</dt><dd class="parameters"><!-- parameter table -->
+<table class="parameter_table">
+<tr>
+<td class="declaration">vForc</td>
+<td class="description">matrix[H][k]  Forecasts
+</td>
+</tr>
+<tr>
+<td class="declaration">vY</td>
+<td class="description">matrix[H][n] Outcomes, n=1 or n=k
+</td>
+</tr>
+<tr>
+<td class="declaration">vYest</td>
+<td class="description">matrix[T][n] In-sample values (needed for MASE), n=1 or n=k
+</td>
+</tr>
+<tr>
+<td class="declaration">iFreq</td>
+<td class="description">int, frequency (needed for MASE)
+</td>
+</tr>
+</table>
+</dd>
+<dt class="returns">Returns:</dt><dd class="returns">matrix[6][k]
+mean(Error)
+SD(Error)
+RMSE
+MAPE
+MASE
+sMAPE
+returns all missing values if no error are observed
+</dd>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity AddForecasts -->
+<a id="ForecastAB___AddForecasts"></a>
+<p><h3>AddForecasts</h3>
+<p></p><span class="declaration">ForecastAB :: AddForecasts ( const cH , const sType , const fnForc )</span>
+<dl>
+<dt></dt><dd>Adds dynamic forecasts.
+</dd>
+<dd>
+<dl>
+<dt class="parameters">Parameters:</dt><dd class="parameters"><!-- parameter table -->
+<table class="parameter_table">
+<tr>
+<td class="declaration">cH</td>
+<td class="description">number of dynamic forecasts to make
+</td>
+</tr>
+<tr>
+<td class="declaration">sType</td>
+<td class="description">in: string argument for fnForc, or array of strings for multiple runs
+</td>
+</tr>
+<tr>
+<td class="declaration">fnForc</td>
+<td class="description"> in: function(const vY, const iFreq, const cH, const sType)
+</td>
+</tr>
+<tr>
+<td class="declaration">@noreturn</td>
+<td class="description"></td>
+</tr>
+</table>
+</dd>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity Calibrate -->
+<a id="ForecastAB___Calibrate"></a>
+<p><h3>Calibrate</h3>
+<p></p><span class="declaration">static ForecastAB :: Calibrate ( const vY , const iFreq , const cH , const sType = "" , const sY = "" )</span>
+<dl>
+<dt></dt><dd>Forecast calibration.
+</dd>
+<dd>
+<dl>
+<dt class="parameters">Parameters:</dt><dd class="parameters"><!-- parameter table -->
+<table class="parameter_table">
+<tr>
+<td class="declaration">vY</td>
+<td class="description">in: matrix[T+H][1] with valid data and forecasts
+</td>
+</tr>
+<tr>
+<td class="declaration">iFreq</td>
+<td class="description">in: int, frequency, or vector[2] with frequency, 2nd frequency
+</td>
+</tr>
+<tr>
+<td class="declaration">cH</td>
+<td class="description">in: int, unused
+</td>
+</tr>
+<tr>
+<td class="declaration">sType</td>
+<td class="description">in: string, 
+</td>
+</tr>
+</table>
+</dd>
+<dt class="returns">Returns:</dt><dd class="returns">array[4] { fitted_forecasts[H][1], se_forecasts[H][1], residuals[T+H][1] }
+</dd>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity Clear -->
+<a id="ForecastAB___Clear"></a>
+<p><h3>Clear</h3>
+<p></p><span class="declaration">ForecastAB :: Clear ( )</span>
+<dl>
+<dt></dt><dd>Clears allocated objects.
+</dd>
+<dd>
+<dl>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity Collect -->
+<a id="ForecastAB___Collect"></a>
+<p><h3>Collect</h3>
+<p></p><span class="declaration">ForecastAB :: Collect ( const sType , const sWhere = "" )</span>
+<dl>
+<dt></dt><dd>Collects results.
+</dd>
+<dd>
+<dl>
+<dt class="parameters">Parameters:</dt><dd class="parameters"><!-- parameter table -->
+<table class="parameter_table">
+<tr>
+<td class="declaration">sType</td>
+<td class="description">in: string argument for fnForc
+</td>
+</tr>
+</table>
+</dd>
+<dt class="returns">Returns:</dt><dd class="returns">matrix[1][m_cY]
+</dd>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity CollectForecasts -->
+<a id="ForecastAB___CollectForecasts"></a>
+<p><h3>CollectForecasts</h3>
+<p></p><span class="declaration">ForecastAB :: CollectForecasts ( const sType )</span>
+<dl>
+<dt></dt><dd>Collect forecasts.
+</dd>
+<dd>
+<dl>
+<dt class="parameters">Parameters:</dt><dd class="parameters"><!-- parameter table -->
+<table class="parameter_table">
+<tr>
+<td class="declaration">sType</td>
+<td class="description">in: string argument used to create forecasts
+</td>
+</tr>
+<tr>
+<td class="declaration">fnGetIt</td>
+<td class="description"> in: function(const var)
+</td>
+</tr>
+<tr>
+<td class="declaration">cRows</td>
+<td class="description"> in: no of rows
+</td>
+</tr>
+</table>
+</dd>
+<dt class="returns">Returns:</dt><dd class="returns">matrix[cRows][m_cY]
+</dd>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity CollectIt -->
+<a id="ForecastAB___CollectIt"></a>
+<p><h3>CollectIt</h3>
+<p></p><span class="declaration">ForecastAB :: CollectIt ( const fnGetIt , const cRows = 1 )</span>
+<dl>
+<dt></dt><dd>Collect results.
+</dd>
+<dd>
+<dl>
+<dt class="parameters">Parameters:</dt><dd class="parameters"><!-- parameter table -->
+<table class="parameter_table">
+<tr>
+<td class="declaration">fnGetIt</td>
+<td class="description"> in: function(const var)
+</td>
+</tr>
+<tr>
+<td class="declaration">cRows</td>
+<td class="description"> in: no of rows
+</td>
+</tr>
+</table>
+</dd>
+<dt class="returns">Returns:</dt><dd class="returns">matrix[cRows][m_cY]
+</dd>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity Decompose -->
+<a id="ForecastAB___Decompose"></a>
+<p><h3>Decompose</h3>
+<p></p><span class="declaration">static ForecastAB :: Decompose ( const vY , const iFreq , const sType )</span>
+<dl>
+<dt></dt><dd>Simple decomposition through moving average filters.
+</dd>
+<dd>
+<dl>
+<dt class="parameters">Parameters:</dt><dd class="parameters"><!-- parameter table -->
+<table class="parameter_table">
+<tr>
+<td class="declaration">vY</td>
+<td class="description">in: matrix[T][1] with data
+</td>
+</tr>
+<tr>
+<td class="declaration">iFreq</td>
+<td class="description">in: frequency
+</td>
+</tr>
+<tr>
+<td class="declaration">sType</td>
+<td class="description">in: string with type: "A" for additive seasonal,"M" for multiplicative seasonal
+</td>
+</tr>
+</table>
+</dd>
+<dt class="returns">Returns:</dt><dd class="returns">vF[T][4] with Trend~Seasonal~Irregular~SA
+</dd>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity Forecast -->
+<a id="ForecastAB___Forecast"></a>
+<p><h3>Forecast</h3>
+<p></p><span class="declaration">virtual ForecastAB :: Forecast ( const vY , const iFreq , const cH , const sType , const sY )</span>
+<dl>
+<dt></dt><dd>Forecasts using AR(1).
+</dd>
+<dd>
+<dl>
+<dt class="parameters">Parameters:</dt><dd class="parameters"><!-- parameter table -->
+<table class="parameter_table">
+<tr>
+<td class="declaration">vY</td>
+<td class="description">in: matrix[T][1] with data
+</td>
+</tr>
+<tr>
+<td class="declaration">sType</td>
+<td class="description">in: string with type: "M0","M1","M01"
+</td>
+</tr>
+<tr>
+<td class="declaration">iFreq</td>
+<td class="description"> in: vector with frequencies
+</td>
+</tr>
+<tr>
+<td class="declaration">cH</td>
+<td class="description">number of forecasts
+</td>
+</tr>
+<tr>
+<td class="declaration">sY</td>
+<td class="description">string, variable name
+</td>
+</tr>
+</table>
+</dd>
+<dt class="returns">Returns:</dt><dd class="returns">matrix[cH][1] with forecasts
+</dd>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity ForecastDelta -->
+<a id="ForecastAB___ForecastDelta"></a>
+<p><h3>ForecastDelta</h3>
+<p></p><span class="declaration">static ForecastAB :: ForecastDelta ( const vY , const iFreq , const cH , const sType = "" , const sY = "" )</span>
+<dl>
+<dt></dt><dd>Delta method: simple forecasting from damped unit root model.
+</dd>
+<dd>
+<dl>
+<dt class="parameters">Parameters:</dt><dd class="parameters"><!-- parameter table -->
+<table class="parameter_table">
+<tr>
+<td class="declaration">vY</td>
+<td class="description">in: matrix[T][1] with valid data
+</td>
+</tr>
+<tr>
+<td class="declaration">iFreq</td>
+<td class="description">in: int, frequency
+</td>
+</tr>
+<tr>
+<td class="declaration">cH</td>
+<td class="description">in: int, forecast horizon
+</td>
+</tr>
+<tr>
+<td class="declaration">sType</td>
+<td class="description">in: string, "A" for seasonal adjustment, "" for no seasonal adjustment, "0" for static
+</td>
+</tr>
+</table>
+</dd>
+<dt class="returns">Returns:</dt><dd class="returns">matrix[cH][1] with forecasts
+</dd>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity ForecastNaive -->
+<a id="ForecastAB___ForecastNaive"></a>
+<p><h3>ForecastNaive</h3>
+<p></p><span class="declaration">virtual ForecastAB :: ForecastNaive ( const vY , const iFreq , const cH , const sType , const sY = "" )</span>
+<dl>
+<dt></dt><dd>Gets naive forecasts.
+</dd>
+<dd>
+<dl>
+<dt class="parameters">Parameters:</dt><dd class="parameters"><!-- parameter table -->
+<table class="parameter_table">
+<tr>
+<td class="declaration">vY</td>
+<td class="description">in: matrix[T][1] with data
+</td>
+</tr>
+<tr>
+<td class="declaration">sType</td>
+<td class="description">in: string with type: "naive1","naive2","ses","ses.r","Holt","des","theta","shd"
+</td>
+</tr>
+<tr>
+<td class="declaration">iFreq</td>
+<td class="description"> in: frequency
+</td>
+</tr>
+<tr>
+<td class="declaration">cH</td>
+<td class="description">number of forecasts
+</td>
+</tr>
+<tr>
+<td class="declaration">sY</td>
+<td class="description">string, variable name
+</td>
+</tr>
+</table>
+</dd>
+<dt class="returns">Returns:</dt><dd class="returns">matrix[cH][1] with naive forecasts
+</dd>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity ForecastRho -->
+<a id="ForecastAB___ForecastRho"></a>
+<p><h3>ForecastRho</h3>
+<p></p><span class="declaration">static ForecastAB :: ForecastRho ( const vY , const iFreq , const cH , const sType = "" , const sY = "" )</span>
+<dl>
+<dt></dt><dd>Rho method: simple forecasting from damped AR(1) model.
+</dd>
+<dd>
+<dl>
+<dt class="parameters">Parameters:</dt><dd class="parameters"><!-- parameter table -->
+<table class="parameter_table">
+<tr>
+<td class="declaration">vY</td>
+<td class="description">in: matrix[T][1] with valid data
+</td>
+</tr>
+<tr>
+<td class="declaration">iFreq</td>
+<td class="description">in: int, frequency, or vector[2] with frequency, 2nd frequency
+</td>
+</tr>
+<tr>
+<td class="declaration">cH</td>
+<td class="description">in: int, forecast horizon
+</td>
+</tr>
+<tr>
+<td class="declaration">sType</td>
+<td class="description">in: string, 
+R is for autoRegressive term at frequency iFreq, A is for seasonal dummies based
+on ANOVA test, 0 is to omit the lagged dependent variables
+</td>
+</tr>
+</table>
+</dd>
+<dt class="returns">Returns:</dt><dd class="returns">matrix[cH][1] with forecasts
+</dd>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity GetPackageName -->
+<a id="ForecastAB___GetPackageName"></a>
+<p><h3>GetPackageName</h3>
+<p></p><span class="declaration">virtual ForecastAB :: GetPackageName ( )</span>
+<dl>
+<dt></dt><dd>Returns package name.
+</dd>
+<dd>
+<dl>
+<dt class="returns">Returns:</dt><dd class="returns">string, package name
+</dd>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity GetPackageVersion -->
+<a id="ForecastAB___GetPackageVersion"></a>
+<p><h3>GetPackageVersion</h3>
+<p></p><span class="declaration">virtual ForecastAB :: GetPackageVersion ( )</span>
+<dl>
+<dt></dt><dd>Returns package version.
+</dd>
+<dd>
+<dl>
+<dt class="returns">Returns:</dt><dd class="returns">string, package version
+</dd>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity GetVarNames -->
+<a id="ForecastAB___GetVarNames"></a>
+<p><h3>GetVarNames</h3>
+<p></p><span class="declaration">ForecastAB :: GetVarNames ( )</span>
+<dl>
+<dt></dt><dd>Returns names of selected variables
+</dd>
+<dd>
+<dl>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity HasSeasonality -->
+<a id="ForecastAB___HasSeasonality"></a>
+<p><h3>HasSeasonality</h3>
+<p></p><span class="declaration">static ForecastAB :: HasSeasonality ( const vX , const iFreq , const dAlpha = 0.1 )</span>
+<dl>
+<dt></dt><dd>Tests of seasonality based on the ACF, chi^2(1).
+</dd>
+<dd>
+<dl>
+<dt class="parameters">Parameters:</dt><dd class="parameters"><!-- parameter table -->
+<table class="parameter_table">
+<tr>
+<td class="declaration">vX</td>
+<td class="description">in: matrix[T][1] with data
+</td>
+</tr>
+<tr>
+<td class="declaration">iFreq</td>
+<td class="description">in: seasonal frequency to test
+</td>
+</tr>
+<tr>
+<td class="declaration">dAlpha</td>
+<td class="description">in: significance level (default is 10%)
+</td>
+</tr>
+</table>
+</dd>
+<dt class="returns">Returns:</dt><dd class="returns">TRUE if seasonality is detected at significance dAlpha, FALSE otherwise.
+</dd>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity Init -->
+<a id="ForecastAB___Init"></a>
+<p><h3>Init</h3>
+<p></p><span class="declaration">ForecastAB :: Init ( )</span>
+<dl>
+<dt></dt><dd>Resets everything.
+</dd>
+<dd>
+<dl>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity InitData -->
+<a id="ForecastAB___InitData"></a>
+<p><h3>InitData</h3>
+<p></p><span class="declaration">virtual ForecastAB :: InitData ( )</span>
+<dl>
+<dt></dt><dd>Initializes data for estimation.
+</dd>
+<dd>
+<dl>
+<dt class="returns">Returns:</dt><dd class="returns">TRUE
+</dd>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity IntervalAccuracy -->
+<a id="ForecastAB___IntervalAccuracy"></a>
+<p><h3>IntervalAccuracy</h3>
+<p></p><span class="declaration">static ForecastAB :: IntervalAccuracy ( const vForcLo , const vForcHi , const vY , const vYest , const iFreq )</span>
+<dl>
+<dt></dt><dd>Evaluates forecast interval accuracy.
+</dd>
+<dd>
+<dl>
+<dt class="parameters">Parameters:</dt><dd class="parameters"><!-- parameter table -->
+<table class="parameter_table">
+<tr>
+<td class="declaration">vForcLo,vForcHi</td>
+<td class="description">matrix[H][k]  Forecasts interval
+</td>
+</tr>
+<tr>
+<td class="declaration">vY</td>
+<td class="description">matrix[H][n] Outcomes, n=1 or n=k
+</td>
+</tr>
+<tr>
+<td class="declaration">vYest</td>
+<td class="description">matrix[T][n] In-sample values (needed for MASE), n=1 or n=k
+</td>
+</tr>
+<tr>
+<td class="declaration">iFreq</td>
+<td class="description">int, frequency (needed for MASE)
+</td>
+</tr>
+</table>
+</dd>
+<dt class="returns">Returns:</dt><dd class="returns">matrix[2][k] MSIS | fraction outside
+</dd>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity IsUnivariate -->
+<a id="ForecastAB___IsUnivariate"></a>
+<p><h3>IsUnivariate</h3>
+<p></p><span class="declaration">virtual ForecastAB :: IsUnivariate ( )</span>
+<dl>
+<dt></dt><dd>Returns FALSE.
+</dd>
+<dd>
+<dl>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity MA -->
+<a id="ForecastAB___MA"></a>
+<p><h3>MA</h3>
+<p></p><span class="declaration">static ForecastAB :: MA ( const vX , const sType , const vPar )</span>
+<dl>
+<dt></dt><dd>Various moving average filters.
+</dd>
+<dd>
+<dl>
+<dt class="parameters">Parameters:</dt><dd class="parameters"><!-- parameter table -->
+<table class="parameter_table">
+<tr>
+<td class="declaration">mX</td>
+<td class="description">in: matrix[T][k] with data
+</td>
+</tr>
+<tr>
+<td class="declaration">sType</td>
+<td class="description">in: string with type of moving average: "MA","S15","S21","H"
+</td>
+</tr>
+<tr>
+<td class="declaration">vPar</td>
+<td class="description">in: length of filter, for MA: one or two values, for Henderson filter:
+one argument.
+</td>
+</tr>
+</table>
+</dd>
+<dt class="returns">Returns:</dt><dd class="returns">vF[T][1] with filtered data
+</dd>
+<dt class="comments">Comments:</dt><dd class="comments">For example: MA(y, "MA", <2,12>) for 2x12 MA, or
+MA(y, "H", 5) for Henderson filter of length 5.
+</dd>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity MeanTest -->
+<a id="ForecastAB___MeanTest"></a>
+<p><h3>MeanTest</h3>
+<p></p><span class="declaration">static ForecastAB :: MeanTest ( const vX )</span>
+<dl>
+<dt></dt><dd>Tests of non-zero mean
+</dd>
+<dd>
+<dl>
+<dt class="parameters">Parameters:</dt><dd class="parameters"><!-- parameter table -->
+<table class="parameter_table">
+<tr>
+<td class="declaration">vX</td>
+<td class="description">in: matrix[T][1] with data
+</td>
+</tr>
+</table>
+</dd>
+<dt class="returns">Returns:</dt><dd class="returns">matrix[2][1] test | pvalue
+</dd>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity MSIS -->
+<a id="ForecastAB___MSIS"></a>
+<p><h3>MSIS</h3>
+<p></p><span class="declaration">static ForecastAB :: MSIS ( const vForcLo , const vForcHi , const vY , const vYest , const iFreq , const dAlpha = 0.05 )</span>
+<dl>
+<dt></dt><dd>Computes a measure of forecast interval accuracy.
+</dd>
+<dd>
+<dl>
+<dt class="parameters">Parameters:</dt><dd class="parameters"><!-- parameter table -->
+<table class="parameter_table">
+<tr>
+<td class="declaration">vForcLo</td>
+<td class="description">matrix[H][1]  Forecasts lower bound
+</td>
+</tr>
+<tr>
+<td class="declaration">vForcHi</td>
+<td class="description">matrix[H][1]  Forecasts upper bound
+</td>
+</tr>
+<tr>
+<td class="declaration">vY</td>
+<td class="description">matrix[H][1] Outcomes
+</td>
+</tr>
+<tr>
+<td class="declaration">vYest</td>
+<td class="description">matrix[T][1] In-sample values
+</td>
+</tr>
+<tr>
+<td class="declaration">iFreq</td>
+<td class="description">int, frequency
+</td>
+</tr>
+</table>
+</dd>
+<dt class="returns">Returns:</dt><dd class="returns">double MSIS
+</dd>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity Report -->
+<a id="ForecastAB___Report"></a>
+<p><h3>Report</h3>
+<p></p><span class="declaration">virtual ForecastAB :: Report ( )</span>
+<dl>
+<dt></dt><dd>Reports on the selected variables.
+</dd>
+<dd>
+<dl>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity SeasonalAnova -->
+<a id="ForecastAB___SeasonalAnova"></a>
+<p><h3>SeasonalAnova</h3>
+<p></p><span class="declaration">static ForecastAB :: SeasonalAnova ( const vX , const iFreq )</span>
+<dl>
+<dt></dt><dd>ANOVA tests of seasonality, F(.,.).
+</dd>
+<dd>
+<dl>
+<dt class="parameters">Parameters:</dt><dd class="parameters"><!-- parameter table -->
+<table class="parameter_table">
+<tr>
+<td class="declaration">vX</td>
+<td class="description">in: matrix[T][1] with data, 
+</td>
+</tr>
+<tr>
+<td class="declaration">iFreq</td>
+<td class="description">in: frequency to test
+</td>
+</tr>
+</table>
+</dd>
+<dt class="returns">Returns:</dt><dd class="returns">matrix[2][2] tests | pvalues; the first test is two-way ANOVA for
+moving seasonality, the second one-way ANOVA for stable seasonality
+returns test 0, pvalue 1 if iFreq<2 or ct <3*iFreq.
+</dd>
+<dt class="comments">Comments:</dt><dd class="comments">The moving test has the null hypothesis that there is no change in seasonality
+(i.e. all annual means are equal, allowing for different seasonal means).
+The stable test has the null hypothesis that all seasonal means are equal, i.e. there is no seasonality.
+</dd>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity SeasonalDummies -->
+<a id="ForecastAB___SeasonalDummies"></a>
+<p><h3>SeasonalDummies</h3>
+<p></p><span class="declaration">static ForecastAB :: SeasonalDummies ( const cT , const iFreq , const iFreq2 = 1 , const cH = 0 )</span>
+<dl>
+<dt></dt><dd>Create the matrix of seasonal dummies.
+</dd>
+<dd>
+<dl>
+<dt class="parameters">Parameters:</dt><dd class="parameters"><!-- parameter table -->
+<table class="parameter_table">
+<tr>
+<td class="declaration">cT</td>
+<td class="description">in: sample size
+</td>
+</tr>
+<tr>
+<td class="declaration">iFreq</td>
+<td class="description">in: int, frequency
+</td>
+</tr>
+<tr>
+<td class="declaration">iFreq2</td>
+<td class="description">in: int, second frequency for aggregated dummiesfrequency
+</td>
+</tr>
+<tr>
+<td class="declaration">cH</td>
+<td class="description">in: int, no of forecasts to add to sample size
+</td>
+</tr>
+</table>
+</dd>
+<dt class="returns">Returns:</dt><dd class="returns">matrix[cT+cH][iFreq - 1] with centred seasonal dummies
+</dd>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity SeasonalInfo -->
+<a id="ForecastAB___SeasonalInfo"></a>
+<p><h3>SeasonalInfo</h3>
+<p></p><span class="declaration">static ForecastAB :: SeasonalInfo ( const vY , iFreq , const bCheckFreq = FALSE )</span>
+<dl>
+<dt></dt><dd>Check for seasonality
+</dd>
+<dd>
+<dl>
+<dt class="parameters">Parameters:</dt><dd class="parameters"><!-- parameter table -->
+<table class="parameter_table">
+<tr>
+<td class="declaration">vY</td>
+<td class="description">in: matrix[T][1] with data
+</td>
+</tr>
+<tr>
+<td class="declaration">iFreq</td>
+<td class="description"> in: frequency
+</td>
+</tr>
+<tr>
+<td class="declaration">bCheckFreq:</td>
+<td class="description">TRUE: try a lower ferquency if none found
+</td>
+</tr>
+</table>
+</dd>
+<dt class="returns">Returns:</dt><dd class="returns">array[3] with {seasdum, seasarlag, frequency}
+</dd>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity SeasonalityTest -->
+<a id="ForecastAB___SeasonalityTest"></a>
+<p><h3>SeasonalityTest</h3>
+<p></p><span class="declaration">static ForecastAB :: SeasonalityTest ( const vX , const iFreq )</span>
+<dl>
+<dt></dt><dd>Test of seasonality of the ACF, chi^2(1).
+</dd>
+<dd>
+<dl>
+<dt class="parameters">Parameters:</dt><dd class="parameters"><!-- parameter table -->
+<table class="parameter_table">
+<tr>
+<td class="declaration">vX</td>
+<td class="description">in: matrix[T][1] with data, 
+</td>
+</tr>
+<tr>
+<td class="declaration">iFreq</td>
+<td class="description">in: maximum length of ACF to test
+</td>
+</tr>
+</table>
+</dd>
+<dt class="returns">Returns:</dt><dd class="returns">matrix[2][1] test | pvalue
+returns test 0, pvalue 1 if iFreq<2 or ct <3*iFreq.
+</dd>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity SeasonalityTests -->
+<a id="ForecastAB___SeasonalityTests"></a>
+<p><h3>SeasonalityTests</h3>
+<p></p><span class="declaration">static ForecastAB :: SeasonalityTests ( const vX , const iFreq )</span>
+<dl>
+<dt></dt><dd>All tests of seasonality of the ACF, each chi^2(1).
+</dd>
+<dd>
+<dl>
+<dt class="parameters">Parameters:</dt><dd class="parameters"><!-- parameter table -->
+<table class="parameter_table">
+<tr>
+<td class="declaration">vX</td>
+<td class="description">in: matrix[T][1] with data, 
+</td>
+</tr>
+<tr>
+<td class="declaration">iFreq</td>
+<td class="description">in: maximum length of ACF to test
+</td>
+</tr>
+</table>
+</dd>
+<dt class="returns">Returns:</dt><dd class="returns">matrix[2][iFreq + 1] tests | pvalues; the first two columns have test value .NaN (acf 0, 1),
+the last one is for iFreq.
+returns test 0, pvalue 1 if iFreq<2 or ct <3*iFreq.
+</dd>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity SetCutBack -->
+<a id="ForecastAB___SetCutBack"></a>
+<p><h3>SetCutBack</h3>
+<p></p><span class="declaration">ForecastAB :: SetCutBack ( const cCB )</span>
+<dl>
+<dt></dt><dd>Sets cut back for sample reduction.
+</dd>
+<dd>
+<dl>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity SetHoldBack -->
+<a id="ForecastAB___SetHoldBack"></a>
+<p><h3>SetHoldBack</h3>
+<p></p><span class="declaration">ForecastAB :: SetHoldBack ( const cHB )</span>
+<dl>
+<dt></dt><dd>Sets hold back for forecast evaluation.
+</dd>
+<dd>
+<dl>
+</dl>
+</dd>
+</dl>
+
+<hr>
+
+<!-- Entity SetLimit -->
+<a id="ForecastAB___SetLimit"></a>
+<p><h3>SetLimit</h3>
+<p></p><span class="declaration">ForecastAB :: SetLimit ( const cT )</span>
+<dl>
+<dt></dt><dd>Sets a limit on the sample size for forecasting.
+</dd>
+<dd>
+<dl>
+</dl>
+</dd>
+</dl>
+
+<!-- Details for ForecastAB Data -->
+<a id="ForecastAB.Data"></a>
+<p><h2><a href="ForecastAB.html#ForecastAB">ForecastAB</a>  : Modelbase Data details</h2>
+
+<!-- Entity m_asY -->
+<a id="ForecastAB___m_asY"></a>
+<p><h3>m_asY</h3>
+<p></p><span class="declaration"> decl m_asY [protected]</span>
+<dl>
+<dt></dt><dd>names of variables	array[m_cY]
+</dd>
+<dd><dl>
+</dl></dd>
+</dl>
+
+<hr>
+
+<!-- Entity m_aVarForc -->
+<a id="ForecastAB___m_aVarForc"></a>
+<p><h3>m_aVarForc</h3>
+<p></p><span class="declaration"> decl m_aVarForc [protected]</span>
+<dl>
+<dt></dt><dd>VarForc values [1][m_cY]
+</dd>
+<dd><dl>
+</dl></dd>
+</dl>
+
+<hr>
+
+<!-- Entity m_cCutback -->
+<a id="ForecastAB___m_cCutback"></a>
+<p><h3>m_cCutback</h3>
+<p></p><span class="declaration"> decl m_cCutback [protected]</span>
+<dl>
+<dt></dt><dd>cutback for sample reduction (ignored entirely)
+</dd>
+<dd><dl>
+</dl></dd>
+</dl>
+
+<hr>
+
+<!-- Entity m_cHoldback -->
+<a id="ForecastAB___m_cHoldback"></a>
+<p><h3>m_cHoldback</h3>
+<p></p><span class="declaration"> decl m_cHoldback [protected]</span>
+<dl>
+<dt></dt><dd>holdback for forecast evaluation
+</dd>
+<dd><dl>
+</dl></dd>
+</dl>
+
+<hr>
+
+<!-- Entity m_cLimit -->
+<a id="ForecastAB___m_cLimit"></a>
+<p><h3>m_cLimit</h3>
+<p></p><span class="declaration"> decl m_cLimit [protected]</span>
+<dl>
+<dt></dt><dd>limit of sample size used for forecasting
+</dd>
+<dd><dl>
+</dl></dd>
+</dl>
+
+<!-- Details for ForecastAB Enums -->
+<a id="ForecastAB.Enums"></a>
+<p><h2><a href="ForecastAB.html#ForecastAB">ForecastAB</a>  : Modelbase Enums details</h2>
+
+<!-- Entity enum1 -->
+<a id="ForecastAB___enum1"></a>
+<p><h3>enum1</h3>
+<p></p><span class="declaration"> enum { TYPE_EMPTY, TYPE_VAR, TYPE_DETERMINISTIC } [protected]</span>
+<dl>
+<dt></dt><dd>Type of variable.
+</dd>
+<dd><dl>
+</dl></dd>
+</dl>
+
+<hr>
+
+<!-- Entity enum2 -->
+<a id="ForecastAB___enum2"></a>
+<p><h3>enum2</h3>
+<p></p><span class="declaration"> enum { Y_VAR, X_VAR } [public]</span>
+<dl>
+<dt></dt><dd>variable types for model specification
+</dd>
+<dd><dl>
+</dl></dd>
+</dl>
+
+<hr>
+
+<!-- Entity enum3 -->
+<a id="ForecastAB___enum3"></a>
+<p><h3>enum3</h3>
+<p></p><span class="declaration"> enum { M_NONE, M_OLS } [public]</span>
+<dl>
+<dt></dt><dd>estimators
+</dd>
+<dd><dl>
+</dl></dd>
+</dl>
+<div class="footer">Generated by <a href="http://oxdoc.sourceforge.net">oxdoc 0.992</a> &copy; Copyright 2005-2010 by Y. Zwols<br>
+Original filename: <code>ForecastAB.html</code></div>
+</div><!-- /page-frame -->
+</body>
+</html>
