@@ -7,7 +7,7 @@ import pandas as pd
 comm = MPI.COMM_WORLD
 groups = ["zlib", "rp", "ppmd", "zlib_rp_ppmd"]
 filename = "m4c_quarterly_data.txt"
-results = d.forecast_multialphabet_from_file(comm, filename, groups, sparse=2, quants_count=16,
+results = d.forecast_multialphabet_from_file(comm, filename, groups, sparse=4, quants_count=16,
                                              difference=1, smooth_func=d.smooth_m3c)
 
 if comm.Get_rank() == 0:
