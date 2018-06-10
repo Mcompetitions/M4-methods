@@ -1,0 +1,26 @@
+#!/opt/shared/anaconda/anaconda3/bin/python
+
+import driver as d
+from mpi4py import MPI
+import predictor as p
+import numpy as np
+import pandas as pd
+
+comm = MPI.COMM_WORLD
+groups = ["zlib", "rp", "ppmd", "zlib_rp_ppmd"]
+filename = "m4c_year_data.txt"
+results = d.forecast_multialphabet_from_file(comm, filename, groups, sparse=2,
+                                             quants_count=16, difference=1,
+                                             smooth_func=d.smooth_m3c)
+
+if comm.Get_rank() == 0:
+    for group in groups:
+        print('-'*20 + ' ' + group + ' ' + '-'*20 + '\n')
+        for result in results:
+            print(str(result[0]) + ' ' + ' '.join(map(str, result[1][group])))
+
+
+#ts = pd.Series([1, 2, 1.2, 3.4, 3.4, 5.6, 5.4, 5.5, 6.5, 7.5, 4.5, 3.2])
+#observed = pd.Series([4.3, 2.3])
+#res = d.handle_single_series_basic(ts, observed, None, ['zlib', 'zstd'], -1, 16)
+#print(res)

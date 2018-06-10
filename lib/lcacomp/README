@@ -1,0 +1,49 @@
+---Note---
+This program is an implementation of the compression algorithm LCA, 
+implemented by Shirou Maruyama (shirou.maruyama@gmail.com).
+The detail is described in our paper ([S.Maruyama et al., "An Online Algorithm for Lightweight Grammar-Based Compression", In proc. of CCP2011, pp19-28]).
+This algorithm is not ESP.
+
+Compression Process:
+[TEXT] --txt2enc--> [ENCODED CFG] or
+[TEXT] --txt2cfg--> [CFG] --cfg2enc--> [ENCODED CFG].
+
+Decompression Process:
+[ENCODED CFG] --enc2txt--> [TEXT].
+[CFG] --cfg2txt--> [TEXT].
+
+
+---Algorithms---
+LCA-online:  online type grammar-transform algorithm (Recommnended).
+LCA-offline: offline type grammar-transform algorithm.
+
+Running time:
+LCA-offline > LCA-online.
+
+Space efficiency for main memory:
+LCA-online >> LCA-offline.
+
+Compression ratio:
+LCA-online = LCA-offline
+
+
+---Programs & Usage---
+"lcacomp" is a standard program.
+ex.) %./lcacomp (c|d) <input_file> <output_file>.
+   c = Compresses <input_file> with LCA-online and creates <output_file>.
+   d = Decompresses <input_file> and creates <output_file>.
+
+"txt2cfg_(online|offline)" transforms an input text into a CFG.
+ex.) %./txt2cfg_(online|offline) <TXT_FILE> <CFG_FILE>
+
+"cfg2txt" restores a CFG into the original text.
+ex.) %./cfg2txt <CFG_FILE> <TXT_FILE>
+
+"cfg2enc" encodes a CFG by the parentheses encoding.
+ex.) %./cfg2enc <CFG_FILE> <ENC_FILE>
+
+"txt2enc_(online|offline)" is a combination of "txt2cfg_(online|offline)" and "cfg2enc".
+ex.) %./txt2enc_(online|offline) <TXT_FILE> <ENC_FILE>
+
+"enc2txt" restores an encoded CFG into an original text.
+ex.) %./enc2txt <ENC_FILE> <TXT_FILE>
