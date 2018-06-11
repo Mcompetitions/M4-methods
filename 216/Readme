@@ -1,0 +1,23 @@
+Running scripts
+===============
+
+For the overview of the code. please refer to the M4-method-description documentaion provided.
+
+1) Run base forecasts (Yearly_ets.R, Quartely_ets.R, Monthly_ets.R, Weekly_tbats.R, Daily_tbats.R,Hourly_tbats.R), using forecast package in R
+
+2) Run the negative forecast test for each category(i.e fix.R)
+
+3) Running LSTM on the residulas (for each type : Finance, Macro etc.) on each forcasting horizon
+
+Prerequisites:
+
+#Microsoft Cognitive Tool Kit (CNTK) : https://github.com/Microsoft/CNTK
+#Baysian optimization for hyper- parameter selection : https://github.com/fmfn/BayesianOptimization
+
+(i) Data prepration for training (i.e Demographic.R)
+(ii) Data prepration for testing (i.e Demographic_Test.R)
+
+4) Combining forecasts (i.e merge.R)
+
+5) Final check for negative forcasts (i.e Final_Daily_forecasts.R)
+
