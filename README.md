@@ -14,3 +14,5 @@ The “Benchmarks and Evaluation” file involves the R code used for generating
 The “ML_benchmarks” file involves the Python code used for generating the forecasts of the Machine Learning benchmarks of the competition.
 
 The “4Theta method” file involves the R code used for generating the forecasts of the 4Theta method. This method, which is a modification of the original Theta method (Assimakopoulos & Nikolopoulos, 2000 – winning method of M3), was submitted by two of the organizers (Spiliotis & Assimakopoulos) and, therefore, wasn’t eligible for a prize.
+
+The “Evaluation and Ranks” file involves the scores and the ranks of the submitted methods, both in terms of Point Forecasts and Prediction Intervals. The results are presented per Frequency, Domain and In Total.
