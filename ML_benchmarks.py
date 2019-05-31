@@ -67,6 +67,18 @@ def moving_averages(ts_init, window):
     :param window: window length
     :return: moving averages ts
     """
+    """
+    As noted by Professor Isidro Lloret Galiana:
+    line 82:
+    if len(ts_init) % 2 == 0:
+    
+    should be changed to
+    if window % 2 == 0:
+    
+    This change has a minor (less then 0.05%) impact on the calculations of the seasonal indices
+    In order for the results to be fully replicable this change is not incorporated into the code below
+    """
+    
     if len(ts_init) % 2 == 0:
         ts_ma = pd.rolling_mean(ts_init, window, center=True)
         ts_ma = pd.rolling_mean(ts_ma, 2, center=True)
@@ -242,6 +254,41 @@ def mase(insample, y_test, y_hat_test, freq):
 
 
 def main():
+    
+    """
+    This script was updated because of errors pointed out by Professor Isidro Lloret Galiana.
+    These issues had no impact on the published results and were problems only because of the
+    example 100x20 array provided in this specific script. Below is the list of the changed lines:
+    
+    -----------------------------
+    line changed from:
+    seasonality_in = deseasonalize(ts, freq)
+    to:
+    seasonality_in = deseasonalize(ts[:-fh], freq)
+    -----------------------------
+    line changed from:
+    a, b = detrend(ts)
+    to:
+    a, b = detrend(ts[:-fh])
+    -----------------------------
+    line changed from:
+    y_hat_test_MLP[i] = y_hat_test_MLP[i] + ((a * (len(ts) + i + 1)) + b)
+    y_hat_test_RNN[i] = y_hat_test_RNN[i] + ((a * (len(ts) + i + 1)) + b)
+    to:
+    y_hat_test_MLP[i] = y_hat_test_MLP[i] + ((a * (len(ts) - fh + i)) + b)
+    y_hat_test_RNN[i] = y_hat_test_RNN[i] + ((a * (len(ts) - fh + i)) + b)
+    -----------------------------
+    line changed from:
+    for i in range(len(ts), len(ts) + fh):
+        y_hat_test_MLP[i - len(ts)] = y_hat_test_MLP[i - len(ts)] * seasonality_in[i % freq] / 100
+        y_hat_test_RNN[i - len(ts)] = y_hat_test_RNN[i - len(ts)] * seasonality_in[i % freq] / 100
+    to:
+    for i in range(len(ts) - fh, len(ts)):
+        y_hat_test_MLP[i - (len(ts) - fh)] = y_hat_test_MLP[i - (len(ts) - fh)] * seasonality_in[i % freq] / 100
+        y_hat_test_RNN[i - (len(ts) - fh)] = y_hat_test_RNN[i - (len(ts) - fh)] * seasonality_in[i % freq] / 100
+    -----------------------------
+    """
+    
     fh = 6         # forecasting horizon
     freq = 1       # data frequency
     in_size = 3    # number of points used as input for each forecast
