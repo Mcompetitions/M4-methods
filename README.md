@@ -1,5 +1,5 @@
 # M4-methods
-This repository is dedicated to the M4 forecasting competition, the continuation of the previous three ones organized by Spyros Makridakis (for more information please visit https://www.mcompetitions.unic.ac.cy/).
+This repository is dedicated to the M4 forecasting competition, the continuation of the previous three ones organized by Spyros Makridakis (https://en.wikipedia.org/wiki/Makridakis_Competitions).
 
 Each folder includes source code that can be used for reproducing the forecasts submitted to the M4 Competition, as well as a short description of the methods utilized. Note that not all of the participants shared their code, meaning that some of the methods might not be available at this repository.
 
