@@ -97,6 +97,10 @@ def seasonality_test(original_ts, ppy):
     :param ppy: periods per year
     :return: boolean value: whether the TS is seasonal
     """
+    
+    # Note that the statistical benchmarks, implemented in R, use the same seasonality test, but with ACF1 being squared
+    # This difference between the two scripts was mentioned after the end of the competition and, therefore, no changes have been made 
+    # to the existing code so that the results of the original submissions are reproducible
     s = acf(original_ts, 1)
     for i in range(2, ppy):
         s = s + (acf(original_ts, i) ** 2)
